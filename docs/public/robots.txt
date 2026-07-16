@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jwpgdx.github.io/kream-helper/sitemap.xml
