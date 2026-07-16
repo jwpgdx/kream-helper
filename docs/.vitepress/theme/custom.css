@@ -190,13 +190,13 @@ body {
   text-decoration: none;
 }
 
-.action-primary {
+.kh-home .action-primary {
   border: 1px solid #1e2228;
   background: #1e2228;
   color: #fff;
 }
 
-.action-primary:hover {
+.kh-home .action-primary:hover {
   border-color: #000;
   background: #000;
   color: #fff;
@@ -215,7 +215,7 @@ body {
 
 .kh-home .release-note {
   margin: 12px 0 0;
-  color: #7c838c;
+  color: #676e77;
   font-size: 12px;
 }
 

@@ -2,23 +2,40 @@ import { defineConfig, type HeadConfig } from 'vitepress'
 
 const siteOrigin = 'https://jwpgdx.github.io'
 const siteBase = '/kream-helper/'
+const siteUrl = `${siteOrigin}${siteBase}`
 const releaseUrl = 'https://github.com/jwpgdx/kream-helper/releases'
 const downloadUrl = `${releaseUrl}/latest/download/KREAM-Helper-0.1.3-Setup.exe`
+const homeTitle = 'KREAM Helper | 크림 보관판매 감지·자동 신청 도우미'
+const homeDescription =
+  'KREAM(크림) 보관판매 신청 가능 상태를 여러 상품에서 감지하고, 원하는 상품의 신청 절차를 돕는 무료 Windows 프로그램입니다.'
+const defaultDescription = 'KREAM Helper 공식 사용 설명서와 Windows 다운로드'
+const socialImageUrl = `${siteUrl}images/kream-helper-og.png`
+const screenshotUrl = `${siteUrl}images/monitor-overview.png`
 const softwareJsonLd = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
   name: 'KREAM Helper',
-  description: 'KREAM 보관판매 신청 가능 상태 확인과 신청 절차를 돕는 Windows 프로그램',
+  description: homeDescription,
   applicationCategory: 'UtilitiesApplication',
   operatingSystem: 'Windows 10, Windows 11',
+  softwareRequirements: '64비트 Windows 10 또는 Windows 11, Microsoft Edge',
   softwareVersion: '0.1.3',
   isAccessibleForFree: true,
-  url: `${siteOrigin}${siteBase}`,
+  inLanguage: 'ko-KR',
+  url: siteUrl,
+  image: socialImageUrl,
+  screenshot: screenshotUrl,
   downloadUrl,
+  installUrl: downloadUrl,
+  releaseNotes: `${siteUrl}changelog`,
+  datePublished: '2026-07-16T19:04:27Z',
+  sameAs: 'https://github.com/jwpgdx/kream-helper',
   offers: {
     '@type': 'Offer',
     price: '0',
-    priceCurrency: 'KRW'
+    priceCurrency: 'KRW',
+    availability: 'https://schema.org/InStock',
+    url: downloadUrl
   },
   author: {
     '@type': 'Person',
@@ -48,39 +65,59 @@ export default defineConfig({
   head: [
     ['meta', { name: 'theme-color', content: '#ffffff' }],
     ['meta', { name: 'color-scheme', content: 'light' }],
-    ['meta', { property: 'og:type', content: 'website' }],
+    ['meta', { name: 'robots', content: 'index, follow, max-image-preview:large' }],
     ['meta', { property: 'og:site_name', content: 'KREAM Helper' }],
-    [
-      'meta',
-      {
-        property: 'og:image',
-        content: `${siteOrigin}${siteBase}logo.png`
-      }
-    ],
-    ['meta', { property: 'og:image:alt', content: 'KREAM Helper 앱 아이콘' }],
-    ['meta', { name: 'twitter:card', content: 'summary' }],
-    ['meta', { name: 'twitter:image', content: `${siteOrigin}${siteBase}logo.png` }],
-    ['script', { type: 'application/ld+json' }, softwareJsonLd],
-    ['link', { rel: 'icon', type: 'image/png', href: `${siteBase}logo.png` }]
+    ['meta', { property: 'og:locale', content: 'ko_KR' }],
+    ['link', { rel: 'icon', type: 'image/png', sizes: '32x32', href: `${siteBase}favicon-32.png` }],
+    ['link', { rel: 'apple-touch-icon', sizes: '180x180', href: `${siteBase}apple-touch-icon.png` }]
   ],
   transformHead({ pageData }): HeadConfig[] {
     const isHome = pageData.relativePath === 'index.md'
     const title = isHome
-      ? 'KREAM Helper'
+      ? homeTitle
       : pageData.title
         ? `${pageData.title} | KREAM Helper`
         : 'KREAM Helper'
-    const description = pageData.description || 'KREAM Helper 공식 사용 설명서와 Windows 다운로드'
-    return [
-      ['link', { rel: 'canonical', href: canonicalUrl(pageData.relativePath) }],
+    const description = pageData.description || defaultDescription
+    const canonical = canonicalUrl(pageData.relativePath)
+    const head: HeadConfig[] = [
+      ['link', { rel: 'canonical', href: canonical }],
+      ['meta', { property: 'og:type', content: 'website' }],
+      ['meta', { property: 'og:url', content: canonical }],
       ['meta', { property: 'og:title', content: title }],
       ['meta', { property: 'og:description', content: description }],
+      ['meta', { property: 'og:image', content: socialImageUrl }],
+      ['meta', { property: 'og:image:type', content: 'image/png' }],
+      ['meta', { property: 'og:image:width', content: '1200' }],
+      ['meta', { property: 'og:image:height', content: '630' }],
+      [
+        'meta',
+        {
+          property: 'og:image:alt',
+          content: 'KREAM Helper에서 여러 보관판매 상품을 감지하는 Windows 앱 화면'
+        }
+      ],
+      ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
       ['meta', { name: 'twitter:title', content: title }],
-      ['meta', { name: 'twitter:description', content: description }]
+      ['meta', { name: 'twitter:description', content: description }],
+      ['meta', { name: 'twitter:image', content: socialImageUrl }],
+      [
+        'meta',
+        {
+          name: 'twitter:image:alt',
+          content: 'KREAM Helper에서 여러 보관판매 상품을 감지하는 Windows 앱 화면'
+        }
+      ]
     ]
+
+    if (isHome) {
+      head.push(['script', { type: 'application/ld+json' }, softwareJsonLd])
+    }
+
+    return head
   },
   themeConfig: {
-    logo: '/logo.png',
+    logo: '/logo-64.png',
     siteTitle: 'KREAM Helper',
     appearance: false,
     nav: [

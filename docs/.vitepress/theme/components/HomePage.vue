@@ -16,7 +16,7 @@ const installerUrl =
 <template>
   <main class="kh-home">
     <section class="home-intro" aria-labelledby="home-title">
-      <p class="home-kicker">Windows 보관판매 감지 도구</p>
+      <p class="home-kicker">Windows용 크림 보관판매 감지 도구</p>
       <h1 id="home-title">KREAM Helper</h1>
       <p class="home-lead">
         여러 상품의 보관판매 신청 가능 상태를 한곳에서 확인하고, 선택한 상품만 감지하거나 자동 신청할 수 있습니다.
@@ -35,7 +35,13 @@ const installerUrl =
       <figure class="home-product-shot">
         <img
           :src="withBase('/images/monitor-overview.png')"
+          :srcset="`${withBase('/images/monitor-overview-640.png')} 640w, ${withBase('/images/monitor-overview.png')} 1164w`"
+          sizes="(max-width: 767px) calc(100vw - 32px), (max-width: 1128px) calc(100vw - 48px), 1080px"
           alt="KREAM Helper에서 세 상품을 감지 대상으로 등록한 화면"
+          width="1164"
+          height="721"
+          decoding="async"
+          fetchpriority="high"
         />
       </figure>
     </section>

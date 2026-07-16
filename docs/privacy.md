@@ -9,7 +9,7 @@ description: KREAM Helper의 로컬 데이터와 Cloudflare 서버 통신 내용
 - 처리 주체: `jwpgdx`
 - 문의: [GitHub @jwpgdx](https://github.com/jwpgdx)
 
-설치 프로그램과 함께 관리하는 전체 문서는 [개인정보 처리방침 원문](./legal/privacy-ko.txt)에서 확인할 수 있습니다.
+설치 프로그램과 함께 관리하는 전체 문서는 [개인정보 처리방침 원문](/legal/privacy-ko.txt)에서 확인할 수 있습니다.
 
 KREAM Helper는 이용자의 KREAM 로그인 정보와 감지 데이터를 제작자 서버에 모으지 않는 것을 원칙으로 합니다.
 
