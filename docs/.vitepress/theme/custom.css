@@ -146,8 +146,8 @@ body {
   text-align: center;
 }
 
-.home-kicker,
-.home-start header p {
+.kh-home .home-kicker,
+.kh-home .home-start header p {
   margin: 0 0 10px;
   color: var(--vp-c-brand-1);
   font-size: 13px;
@@ -161,8 +161,8 @@ body {
   font-weight: 820;
 }
 
-.home-lead {
-  max-width: 700px;
+.kh-home .home-lead {
+  width: min(700px, 100%);
   margin: 20px auto 0;
   color: var(--vp-c-text-2);
   font-size: 18px;
@@ -213,7 +213,7 @@ body {
   color: var(--vp-c-text-1);
 }
 
-.release-note {
+.kh-home .release-note {
   margin: 12px 0 0;
   color: #7c838c;
   font-size: 12px;
@@ -376,7 +376,7 @@ body {
     font-size: 40px;
   }
 
-  .home-lead {
+  .kh-home .home-lead {
     font-size: 16px;
   }
 
