@@ -65,6 +65,13 @@ export default defineConfig({
   head: [
     ['meta', { name: 'theme-color', content: '#ffffff' }],
     ['meta', { name: 'color-scheme', content: 'light' }],
+    [
+      'meta',
+      {
+        name: 'google-site-verification',
+        content: 'pNCpC_72SPiQ3Zq78PNfdxQEPH54WkqnhREJhGDGBzk'
+      }
+    ],
     ['meta', { name: 'robots', content: 'index, follow, max-image-preview:large' }],
     ['meta', { property: 'og:site_name', content: 'KREAM Helper' }],
     ['meta', { property: 'og:locale', content: 'ko_KR' }],
