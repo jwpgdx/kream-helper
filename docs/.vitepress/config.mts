@@ -4,7 +4,7 @@ const siteOrigin = 'https://jwpgdx.github.io'
 const siteBase = '/kream-helper/'
 const siteUrl = `${siteOrigin}${siteBase}`
 const releaseUrl = 'https://github.com/jwpgdx/kream-helper/releases'
-const downloadUrl = `${releaseUrl}/latest/download/KREAM-Helper-0.1.3-Setup.exe`
+const downloadUrl = `${releaseUrl}/latest/download/KREAM-Helper-0.1.4-Setup.exe`
 const homeTitle = 'KREAM Helper | 크림 보관판매 감지·자동 신청 도우미'
 const homeDescription =
   'KREAM(크림) 보관판매 신청 가능 상태를 여러 상품에서 감지하고, 원하는 상품의 신청 절차를 돕는 무료 Windows 프로그램입니다.'
@@ -19,7 +19,7 @@ const softwareJsonLd = JSON.stringify({
   applicationCategory: 'UtilitiesApplication',
   operatingSystem: 'Windows 10, Windows 11',
   softwareRequirements: '64비트 Windows 10 또는 Windows 11, Microsoft Edge',
-  softwareVersion: '0.1.3',
+  softwareVersion: '0.1.4',
   isAccessibleForFree: true,
   inLanguage: 'ko-KR',
   url: siteUrl,
@@ -75,6 +75,7 @@ export default defineConfig({
     ['meta', { name: 'robots', content: 'index, follow, max-image-preview:large' }],
     ['meta', { property: 'og:site_name', content: 'KREAM Helper' }],
     ['meta', { property: 'og:locale', content: 'ko_KR' }],
+    ['link', { rel: 'icon', type: 'image/x-icon', href: `${siteBase}favicon.ico` }],
     ['link', { rel: 'icon', type: 'image/png', sizes: '32x32', href: `${siteBase}favicon-32.png` }],
     ['link', { rel: 'apple-touch-icon', sizes: '180x180', href: `${siteBase}apple-touch-icon.png` }]
   ],

@@ -11,13 +11,13 @@ KREAM Helper는 Windows 10/11 64비트 환경을 기준으로 배포합니다. M
 
 최신 Release에서 아래 두 파일을 함께 받습니다.
 
-- `KREAM-Helper-0.1.3-Setup.exe`
-- `KREAM-Helper-0.1.3-Setup.exe.sha256`
+- `KREAM-Helper-0.1.4-Setup.exe`
+- `KREAM-Helper-0.1.4-Setup.exe.sha256`
 
 PowerShell에서 다음 명령으로 설치 파일의 체크섬을 확인할 수 있습니다.
 
 ```powershell
-Get-FileHash .\KREAM-Helper-0.1.3-Setup.exe -Algorithm SHA256
+Get-FileHash .\KREAM-Helper-0.1.4-Setup.exe -Algorithm SHA256
 ```
 
 출력값이 Release에 첨부된 `.sha256` 파일과 같아야 합니다.

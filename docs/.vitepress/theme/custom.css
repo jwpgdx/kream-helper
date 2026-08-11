@@ -1,6 +1,7 @@
 :root {
-  --vp-font-family-base: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", "Segoe UI", sans-serif;
-  --vp-font-family-mono: "Cascadia Code", "SFMono-Regular", Consolas, monospace;
+  --vp-font-family-base:
+    'Pretendard', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Segoe UI', sans-serif;
+  --vp-font-family-mono: 'Cascadia Code', 'SFMono-Regular', Consolas, monospace;
   --vp-c-brand-1: #d93832;
   --vp-c-brand-2: #bd2d28;
   --vp-c-brand-3: #a82521;
@@ -132,48 +133,89 @@ body {
 
 .kh-home {
   width: 100%;
+  overflow: hidden;
 }
 
-.home-intro,
-.home-start,
-.home-caution {
-  width: min(1080px, calc(100% - 48px));
-  margin: 0 auto;
+.VPHome .vp-doc.container {
+  max-width: none;
+  padding: 0;
 }
 
-.home-intro {
-  padding: 62px 0 30px;
+.home-hero {
+  position: relative;
+  display: grid;
+  min-height: min(590px, calc(100svh - 96px));
+  overflow: hidden;
+  padding: 46px 24px 54px;
+  background: #ff2305;
+  isolation: isolate;
+  place-items: center;
+}
+
+.home-hero-content {
+  position: relative;
+  z-index: 2;
+  width: min(680px, 100%);
+  color: #090806;
   text-align: center;
 }
 
-.kh-home .home-kicker,
-.kh-home .home-start header p {
-  margin: 0 0 10px;
-  color: var(--vp-c-brand-1);
-  font-size: 13px;
-  font-weight: 750;
+.home-app-icon {
+  display: block;
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 19px;
+  border-radius: 22px;
+  box-shadow: 0 12px 30px rgba(40, 8, 0, 0.2);
 }
 
-.home-intro h1 {
-  margin: 0;
-  font-size: clamp(40px, 5vw, 58px);
-  line-height: 1.05;
-  font-weight: 820;
+.kh-home .home-kicker,
+.kh-home .home-product-copy > p,
+.kh-home .home-start header p {
+  margin: 0 0 10px;
+  font-size: 13px;
+  font-weight: 760;
+}
+
+.home-hero .home-kicker {
+  color: rgba(10, 6, 4, 0.72);
+}
+
+.home-hero h1 {
+  width: 300px;
+  max-width: 100%;
+  margin: -8px auto 0;
+  line-height: 0;
+}
+
+.home-title-logo {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.home-title-text {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 .kh-home .home-lead {
-  width: min(700px, 100%);
-  margin: 20px auto 0;
-  color: var(--vp-c-text-2);
-  font-size: 18px;
-  line-height: 1.7;
+  margin: 18px auto 0;
+  color: rgba(10, 6, 4, 0.76);
+  font-size: 17px;
+  line-height: 1.5;
 }
 
 .home-actions {
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin-top: 28px;
+  margin-top: 25px;
 }
 
 .home-actions a,
@@ -186,13 +228,13 @@ body {
   padding: 0 18px;
   border-radius: 6px;
   font-size: 14px;
-  font-weight: 720;
+  font-weight: 730;
   text-decoration: none;
 }
 
 .kh-home .action-primary {
-  border: 1px solid #1e2228;
-  background: #1e2228;
+  border: 1px solid #151515;
+  background: #151515;
   color: #fff;
 }
 
@@ -202,25 +244,216 @@ body {
   color: #fff;
 }
 
-.action-secondary {
-  border: 1px solid var(--vp-c-border);
-  background: #fff;
-  color: var(--vp-c-text-1);
+.kh-home .action-secondary {
+  border: 1px solid rgba(22, 14, 10, 0.18);
+  background: rgba(255, 255, 255, 0.92);
+  color: #14110f;
 }
 
-.action-secondary:hover {
-  border-color: #aeb4bc;
-  color: var(--vp-c-text-1);
+.kh-home .action-secondary:hover {
+  border-color: rgba(22, 14, 10, 0.35);
+  background: #fff;
+  color: #14110f;
 }
 
 .kh-home .release-note {
   margin: 12px 0 0;
-  color: #676e77;
+  color: rgba(10, 6, 4, 0.66);
   font-size: 12px;
 }
 
+.hero-objects,
+.hero-object {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+}
+
+.hero-objects {
+  z-index: 1;
+  inset: 0;
+}
+
+.hero-object {
+  display: block;
+  width: 132px;
+  height: auto;
+  object-fit: contain;
+  animation: hero-float var(--duration, 10s) ease-in-out var(--delay, 0s) infinite;
+  transform: rotate(var(--rotation, 0deg));
+  will-change: transform;
+}
+
+.hero-object--shoes-1 {
+  top: 230px;
+  left: -30px;
+  --rotation: -8deg;
+  --rotation-mid: -7deg;
+  --float-y: -4px;
+  --duration: 11s;
+}
+
+.hero-object--shoes-2 {
+  top: 260px;
+  right: -25px;
+  --rotation: 8deg;
+  --rotation-mid: 7deg;
+  --float-y: -4px;
+  --duration: 10.5s;
+  --delay: -2.2s;
+}
+
+.hero-object--bag-1 {
+  top: 25px;
+  right: 25px;
+  --rotation: 7deg;
+  --rotation-mid: 8deg;
+  --float-y: 4px;
+  --duration: 11.5s;
+  --delay: -4s;
+}
+
+.hero-object--bag-2 {
+  top: 90px;
+  left: 175px;
+  --rotation: -6deg;
+  --rotation-mid: -5deg;
+  --float-y: -4px;
+  --duration: 10.8s;
+  --delay: -1s;
+}
+
+.hero-object--box {
+  top: 15px;
+  left: 20px;
+  --rotation: 6deg;
+  --rotation-mid: 5deg;
+  --float-y: 4px;
+  --duration: 10.2s;
+  --delay: -3.4s;
+}
+
+.hero-object--clothes {
+  right: 30px;
+  bottom: 20px;
+  --rotation: 7deg;
+  --rotation-mid: 6deg;
+  --float-y: -4px;
+  --duration: 11.2s;
+  --delay: -5.1s;
+}
+
+.hero-object--hat-1 {
+  top: 300px;
+  left: 155px;
+  --rotation: -7deg;
+  --rotation-mid: -6deg;
+  --float-y: 4px;
+  --duration: 10.6s;
+  --delay: -2.7s;
+}
+
+.hero-object--hat-2 {
+  top: 170px;
+  right: 175px;
+  --rotation: -7deg;
+  --rotation-mid: -8deg;
+  --float-y: -4px;
+  --duration: 10.9s;
+  --delay: -1.7s;
+}
+
+.hero-object--hoodie {
+  top: 460px;
+  left: 20px;
+  --rotation: 5deg;
+  --rotation-mid: 4deg;
+  --float-y: -4px;
+  --duration: 11.7s;
+  --delay: -4.5s;
+}
+
+.hero-object--pants {
+  top: -60px;
+  left: 205px;
+  --rotation: -5deg;
+  --rotation-mid: -4deg;
+  --float-y: 4px;
+  --duration: 10.4s;
+  --delay: -3s;
+}
+
+.hero-object--socks {
+  right: 205px;
+  bottom: -50px;
+  --rotation: 6deg;
+  --rotation-mid: 5deg;
+  --float-y: -4px;
+  --duration: 11.4s;
+  --delay: -6s;
+}
+
+.hero-object--tag {
+  top: -55px;
+  right: 190px;
+  --rotation: 10deg;
+  --rotation-mid: 9deg;
+  --float-y: 4px;
+  --duration: 10.7s;
+  --delay: -2s;
+}
+
+@keyframes hero-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(var(--rotation, 0deg));
+  }
+
+  50% {
+    transform: translate3d(0, var(--float-y, -4px), 0) rotate(var(--rotation-mid, 1deg));
+  }
+}
+
+.home-product,
+.home-start,
+.home-caution {
+  width: min(1080px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.home-product {
+  padding: 58px 0 72px;
+}
+
+.home-product-copy {
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) minmax(300px, 430px);
+  align-items: end;
+  column-gap: 40px;
+}
+
+.home-product-copy > p {
+  grid-column: 1;
+  color: var(--vp-c-brand-1);
+}
+
+.home-product-copy h2 {
+  grid-column: 1;
+  margin: 0;
+  font-size: 32px;
+  line-height: 1.25;
+}
+
+.home-product-copy > span {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  color: var(--vp-c-text-2);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
 .home-product-shot {
-  margin: 34px auto 0;
+  margin: 30px auto 0;
 }
 
 .home-product-shot img {
@@ -231,7 +464,7 @@ body {
   border: 1px solid var(--vp-c-divider);
   border-radius: 6px;
   background: #fff;
-  box-shadow: 0 14px 36px rgba(22, 27, 33, 0.08);
+  box-shadow: 0 16px 42px rgba(22, 27, 33, 0.1);
 }
 
 .home-facts {
@@ -269,6 +502,10 @@ body {
   padding: 72px 0;
 }
 
+.home-start header p {
+  color: var(--vp-c-brand-1);
+}
+
 .home-start header h2 {
   margin: 0;
   font-size: 30px;
@@ -293,12 +530,12 @@ body {
   display: grid;
   width: 28px;
   height: 28px;
-  place-items: center;
   border: 1px solid var(--vp-c-border);
   border-radius: 50%;
   color: var(--vp-c-text-2);
   font-size: 12px;
   font-weight: 750;
+  place-items: center;
 }
 
 .start-list div {
@@ -361,31 +598,149 @@ body {
   white-space: nowrap;
 }
 
+@media (max-width: 1023px) {
+  .hero-object--bag-2,
+  .hero-object--hat-1,
+  .hero-object--hat-2,
+  .hero-object--pants,
+  .hero-object--socks,
+  .hero-object--tag {
+    display: none;
+  }
+
+  .hero-object {
+    width: 112px;
+  }
+
+  .hero-object--shoes-1 {
+    top: 220px;
+    left: -45px;
+  }
+
+  .hero-object--shoes-2 {
+    top: 255px;
+    right: -45px;
+  }
+
+  .hero-object--box {
+    top: 28px;
+    left: 18px;
+  }
+
+  .hero-object--hoodie {
+    top: auto;
+    bottom: -35px;
+    left: 18px;
+  }
+
+  .hero-object--bag-1 {
+    top: 34px;
+    right: 18px;
+  }
+
+  .hero-object--clothes {
+    right: 18px;
+    bottom: -30px;
+  }
+}
+
 @media (max-width: 767px) {
-  .home-intro,
+  .home-product,
   .home-start,
   .home-caution {
     width: min(100% - 32px, 1080px);
   }
 
-  .home-intro {
-    padding-top: 42px;
+  .home-hero {
+    min-height: min(610px, calc(100svh - 88px));
+    padding: 38px 20px 46px;
   }
 
-  .home-intro h1 {
-    font-size: 40px;
+  .home-app-icon {
+    width: 78px;
+    height: 78px;
+    margin-bottom: 16px;
+    border-radius: 18px;
+  }
+
+  .home-hero h1 {
+    width: 230px;
+    margin-top: -4px;
+    margin-bottom: 0;
   }
 
   .kh-home .home-lead {
-    font-size: 16px;
+    margin-top: 14px;
+    font-size: 15px;
   }
 
   .home-actions {
     flex-direction: column;
+    width: min(360px, 100%);
+    margin: 22px auto 0;
   }
 
   .home-actions a {
     width: 100%;
+  }
+
+  .hero-object--shoes-2,
+  .hero-object--clothes,
+  .hero-object--hat-1,
+  .hero-object--hat-2,
+  .hero-object--hoodie,
+  .hero-object--socks {
+    display: none;
+  }
+
+  .hero-object {
+    width: 88px;
+    --float-y: -3px;
+  }
+
+  .hero-object--shoes-1 {
+    top: 60px;
+    left: -46px;
+  }
+
+  .hero-object--bag-1 {
+    top: 8px;
+    right: -45px;
+  }
+
+  .hero-object--box {
+    top: auto;
+    bottom: -18px;
+    left: -42px;
+  }
+
+  .hero-object--tag {
+    display: block;
+    top: auto;
+    right: -25px;
+    bottom: 20px;
+  }
+
+  .home-product {
+    padding: 48px 0 54px;
+  }
+
+  .home-product-copy {
+    display: block;
+  }
+
+  .home-product-copy h2 {
+    font-size: 26px;
+  }
+
+  .home-product-copy > span {
+    display: block;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+
+  .home-product-shot {
+    margin-top: 24px;
   }
 
   .home-product-shot img {
@@ -440,5 +795,11 @@ body {
 
   .vp-doc h1 {
     font-size: 28px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-object {
+    animation: none;
   }
 }
